@@ -119,9 +119,11 @@ NS_ENUM(NSInteger, kSettingSection)
             {
                 NSDictionary* infoDict = [[NSBundle mainBundle] infoDictionary];
                 NSString* version = [infoDict objectForKey:@"CFBundleShortVersionString"];
-                NSString* build = [infoDict objectForKey:@"CFBundleVersion"];
+                // NSString* build = [infoDict objectForKey:@"CFBundleVersion"];
+                NSString* buildDate = [NSString stringWithUTF8String:__DATE__];
+                NSString* buildTime = [NSString stringWithUTF8String:__TIME__];
                 
-                cell.textLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Version %@ (%@)", @""), version, build];
+                cell.textLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Version %@ (%@: %@ UTC)", @ ""), version, buildDate, buildTime];
                 cell.accessoryType = UITableViewCellAccessoryNone;
             } else {
                 cell.textLabel.text = self.aboutRows[indexPath.row];
