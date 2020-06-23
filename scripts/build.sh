@@ -17,8 +17,8 @@ export PING_SLEEP=10s
 export BUILD_OUTPUT=../scripts/build.out
 touch $BUILD_OUTPUT
 dump_output() {
-   echo Tailing the last 500 lines of output:
-   tail -500 $BUILD_OUTPUT  
+   echo Tailing the last 25 lines of output:
+   tail -25 $BUILD_OUTPUT  
 }
 error_handler() {
   echo ERROR: An error was encountered with the build.
@@ -33,23 +33,66 @@ PING_LOOP_PID=$!
 
 
 ls -l ~/Library/MobileDevice/Provisioning\ Profiles/
-# echo "*********************"
-# echo "*     Building      *"
-# echo "*********************"
-# xcrun xcodebuild -workspace "Monal.xcworkspace" -scheme "Monal" -sdk iphoneos -configuration Debug build CODE_SIGN_IDENTITY="$DEVELOPER_NAME" CODE_SIGN_STYLE="Manual" > $BUILD_OUTPUT 2>&1
-# #PROVISIONING_PROFILE_SPECIFIER="$PROFILE_NAME"
-echo "*********************"
-echo "*     Archiving     *"
-echo "*********************"
-xcrun xcodebuild -workspace "Monal.xcworkspace" -scheme "Monal" -sdk iphoneos -configuration Debug -archivePath "build/$APP_NAME.xcarchive" archive CODE_SIGN_IDENTITY="$DEVELOPER_NAME" CODE_SIGN_STYLE="Manual" >> $BUILD_OUTPUT 2>&1
-echo "**********************"
-echo "*     Exporting      *"
-echo "**********************"
+
+
+echo ""
+echo "*********************************"
+echo "*     Installing macOS Pods     *"
+echo "*********************************"
+pod install
+
+echo ""
+echo "***************************"
+echo "*     Archiving macOS     *"
+echo "***************************"
+xcrun xcodebuild -workspace "Monal.xcworkspace" -scheme "Monal" -sdk macosx -configuration Debug -destination 'platform=macOS,variant=Mac Catalyst' -archivePath "build/macos_$APP_NAME.xcarchive" clean archive CODE_SIGN_IDENTITY="$APP_DEVELOPER_NAME" CODE_SIGN_STYLE="Manual" BUILD_LIBRARIES_FOR_DISTRIBUTION=YES SUPPORTS_MACCATALYST=YES >> $BUILD_OUTPUT 2>&1
+
+echo ""
+echo "****************************"
+echo "*     Exporting macOS      *"
+echo "****************************"
 # see: https://gist.github.com/cocoaNib/502900f24846eb17bb29
 # and: https://forums.developer.apple.com/thread/100065
-xcodebuild -exportArchive -archivePath "build/$APP_NAME.xcarchive" -exportPath "build/ipa" -exportOptionsPlist ../scripts/exportOptions.plist
+# and: for developer-id distribution (distribution *outside* of appstore) an developer-id certificate must be used for building
+xcodebuild -exportArchive -archivePath "build/macos_$APP_NAME.xcarchive" -exportPath "build/app" -exportOptionsPlist ../scripts/catalyst_exportOptions.plist
 echo "build dir:"
 ls -l "build"
+
+echo ""
+echo "**************************"
+echo "*     Packing macOS      *"
+echo "**************************"
+cd build/app
+tar -cf "$APP_NAME.tar" "$APP_NAME.app"
+cd ../..
+ls -l build/app
+
+
+echo ""
+echo "*******************************"
+echo "*     Installing iOS Pods     *"
+echo "*******************************"
+sed 's/###ios_only###//' Podfile >Podfile.new
+mv Podfile Podfile.old
+mv Podfile.new Podfile
+pod install
+
+echo ""
+echo "*************************"
+echo "*     Archiving iOS     *"
+echo "*************************"
+xcrun xcodebuild -workspace "Monal.xcworkspace" -scheme "Monal" -sdk iphoneos -configuration Debug -archivePath "build/ios_$APP_NAME.xcarchive" clean archive CODE_SIGN_IDENTITY="$IOS_DEVELOPER_NAME" CODE_SIGN_STYLE="Manual" >> $BUILD_OUTPUT 2>&1
+
+echo ""
+echo "*************************"
+echo "*     Exporting iOS     *"
+echo "*************************"
+# see: https://gist.github.com/cocoaNib/502900f24846eb17bb29
+# and: https://forums.developer.apple.com/thread/100065
+xcodebuild -exportArchive -archivePath "build/ios_$APP_NAME.xcarchive" -exportPath "build/ipa" -exportOptionsPlist ../scripts/exportOptions.plist
+echo "build dir:"
+ls -l "build"
+
 
 # The build finished without returning an error so dump a tail of the output
 #dump_output
