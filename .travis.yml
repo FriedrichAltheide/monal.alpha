@@ -1,6 +1,8 @@
 os: osx
 language: objective-c
 osx_image: xcode12
+cache:
+  cocoapods: true
 env:
   global:
   - |
