@@ -3,6 +3,7 @@ language: objective-c
 osx_image: xcode12
 cache:
   cocoapods: true
+podfile: Monal/Podfile
 env:
   global:
   - |
