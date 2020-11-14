@@ -12,7 +12,6 @@ env:
     - APP_DEVELOPER_NAME="Developer ID Application: Thilo Molitor (S8D843U34Y)"
     - BUILD_MACOS=true
   - secure: RzeJELojq7uE1YsIqIQHLVTsDVkmGS449J2q30+GCaL48v1pOhvK+AQKnbH/OX2Nm/REnEfyYpp/Q2g7SseS9rDgK25ffd+9C0F0cjjhV471rQASNJVsQywqUf3NYexGtqcSWUOwnGb7nMiTCqFgaf1Bx4B4hJCn9eBsjqlAvYf7kt5aGdCpxxQ5bqMyHRg1k0QmeriP98zv3iugtyz2A/MJVRe2cCNWtcO1L22iFXSUW8wWBtS6iOPxXPS2R3Ueqdm6OWquCUl5LhP6lxjmzDGzOM9O8QE4FPmo2Q9q7hrW1nYyU5rUX4aDSIGxF7HMZr2WnWXhvfoEAwYTPdIR4n5+sDT4mCyarHVSfd+S7kzXmHKiZyyU+bjSUtOs1xAz36vQhcdaPyfI9E9lXl0eIJCbT7K8sdTtYW+YIB7w7uBid+poI+sdx7O8LJm/TgXBnh9K8KuaGVMugECiqkxcWwbVSAyOjZhKlvlF128SJhT3CJT+OR17OKPuBvnVKkrZU8F0x79+hx1zdx3b3IJ8JJ7PRGATdL7Avo8zEov3YxLdHQHfh1cMIU1WyQhm+MpdOnyUxPVUBWEIC55xLRABTYnePa7omr65vlmysdOPEEh6b8BVPMd15zfpE3f22E7c+MOpm/lvJw59CZMsjgAE4lcQ4uzd5vaH/vFlE+FVmkY=
-podfile: Podfile
 before_install:
 - ./scripts/add-key.sh
 - cd Monal
