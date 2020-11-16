@@ -17,8 +17,8 @@ export PING_SLEEP=10s
 export BUILD_OUTPUT=../scripts/build.out
 touch $BUILD_OUTPUT
 dump_output() {
-   echo Tailing the last 25 lines of output:
-   tail -25 $BUILD_OUTPUT  
+   echo Tailing the last 50 lines of output:
+   tail -50 $BUILD_OUTPUT  
 }
 error_handler() {
   echo ERROR: An error was encountered with the build.
