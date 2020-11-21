@@ -3,8 +3,8 @@ language: objective-c
 osx_image: xcode12
 cache:
   cocoapods: true
-  directories:
-  - $HOME/Library/Developer/Xcode/DerivedData
+  #  directories:
+  #- $HOME/Library/Developer/Xcode/DerivedData
 podfile: Monal/Podfile
 env:
   global:
