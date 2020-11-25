@@ -42,6 +42,7 @@ then
 	echo "*     Installing macOS Pods     *"
 	echo "*********************************"
 	pod install
+	pod update
 	
 	echo ""
 	echo "***************************"
@@ -80,6 +81,7 @@ sed 's/###ios_only###//' Podfile >Podfile.new
 mv Podfile Podfile.old
 mv Podfile.new Podfile
 pod install
+pod update
 
 echo ""
 echo "*************************"
