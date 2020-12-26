@@ -48,7 +48,7 @@ then
 	echo "***************************"
 	echo "*     Archiving macOS     *"
 	echo "***************************"
-	xcrun xcodebuild -workspace "Monal.xcworkspace" -scheme "Monal" -sdk macosx -configuration Debug -destination 'platform=macOS,variant=Mac Catalyst' -archivePath "build/macos_$APP_NAME.xcarchive" clean archive CODE_SIGN_IDENTITY="$APP_DEVELOPER_NAME" CODE_SIGN_STYLE="Manual" GCC_PREPROCESSOR_DEFINITIONS='$GCC_PREPROCESSOR_DEFINITIONS IS_ALPHA=1' BUILD_LIBRARIES_FOR_DISTRIBUTION=YES SUPPORTS_MACCATALYST=YES >> $BUILD_OUTPUT 2>&1
+	xcrun xcodebuild -workspace "Monal.xcworkspace" -scheme "Monal" -sdk macosx -configuration Debug -destination 'generic/platform=macOS,variant=Mac Catalyst,name=Any Mac' -archivePath "build/macos_$APP_NAME.xcarchive" clean archive CODE_SIGN_IDENTITY="$APP_DEVELOPER_NAME" CODE_SIGN_STYLE="Manual" GCC_PREPROCESSOR_DEFINITIONS='$GCC_PREPROCESSOR_DEFINITIONS IS_ALPHA=1' BUILD_LIBRARIES_FOR_DISTRIBUTION=YES SUPPORTS_MACCATALYST=YES >> $BUILD_OUTPUT 2>&1
 	
 	echo ""
 	echo "****************************"
