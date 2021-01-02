@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dqD-Rt-bEF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dqD-Rt-bEF">
     <device id="retina6_5" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -477,10 +477,10 @@
             </objects>
             <point key="canvasLocation" x="590" y="-3314"/>
         </scene>
-        <!--Edit Group Chat-->
+        <!--Join Group Chat-->
         <scene sceneID="kig-36-J1j">
             <objects>
-                <tableViewController title="Edit Group Chat" id="GpF-k7-Z6D" customClass="MLEditGroupViewController" sceneMemberID="viewController">
+                <tableViewController title="Join Group Chat" id="GpF-k7-Z6D" customClass="MLJoinGroupViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="9LZ-0p-JU3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -544,38 +544,14 @@
                             <outlet property="delegate" destination="GpF-k7-Z6D" id="3t6-lJ-64G"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Edit Group Chat" id="yIE-Ub-BAk"/>
+                    <navigationItem key="navigationItem" title="Join Group Chat" id="yIE-Ub-BAk"/>
                     <connections>
-                        <outlet property="keyboardToolbar" destination="l3W-dT-pDe" id="aRi-8B-diS"/>
                         <segue destination="YbY-nY-vV9" kind="show" identifier="showAccountPicker" id="Ecb-7N-zer"/>
                     </connections>
                 </tableViewController>
-                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="l3W-dT-pDe">
-                    <rect key="frame" x="0.0" y="0.0" width="411" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <viewLayoutGuide key="safeArea" id="eUy-Vk-Ub1"/>
-                    <items>
-                        <barButtonItem title="Previous" id="AtF-5m-xfT">
-                            <connections>
-                                <action selector="toolbarPrevious:" destination="GpF-k7-Z6D" id="rJp-6h-Pam"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem title="Next" width="69" id="HOk-DV-nls">
-                            <connections>
-                                <action selector="toolbarNext:" destination="GpF-k7-Z6D" id="Gf4-S9-Qpt"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="8Z0-fJ-bNo"/>
-                        <barButtonItem title="Done" style="done" id="gy3-P9-g7W">
-                            <connections>
-                                <action selector="toolbarDone:" destination="GpF-k7-Z6D" id="mTY-vA-mrD"/>
-                            </connections>
-                        </barButtonItem>
-                    </items>
-                </toolbar>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zeF-qp-qgY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2967" y="-2380"/>
+            <point key="canvasLocation" x="2967" y="-2608"/>
         </scene>
         <!--Contact Requests-->
         <scene sceneID="1it-dR-aTE">
@@ -626,7 +602,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dX7-sf-ltO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3800" y="-1185"/>
+            <point key="canvasLocation" x="2967" y="-972"/>
         </scene>
         <!--Code Scanner-->
         <scene sceneID="yPg-4o-1sG">
@@ -642,7 +618,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d2y-pI-nP7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4843" y="-1652"/>
+            <point key="canvasLocation" x="4586" y="-1696"/>
         </scene>
         <!--Select An Account-->
         <scene sceneID="XCz-Vd-Uah">
@@ -683,7 +659,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jPE-1g-XdS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3958" y="-2057"/>
+            <point key="canvasLocation" x="3745" y="-2154"/>
         </scene>
         <!--Chats-->
         <scene sceneID="vAl-ec-NFW">
@@ -1868,8 +1844,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5zY-lR-WCu"/>
-        <segue reference="5bM-w5-CYw"/>
+        <segue reference="Ecb-7N-zer"/>
+        <segue reference="ndm-rg-MfL"/>
         <segue reference="hqW-lo-9tZ"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -1881,21 +1857,6 @@
         <image name="Tie_My_Boat_by_Ray_Garcia" width="563" height="1218"/>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="darkTextColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="darkTextColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="groupTableViewBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
