@@ -57,6 +57,13 @@ enum ContactDetailsConnDetailsRows {
     ContactDetailsConnDetailsRowsCnt
 };
 
+enum ContactDetailsAboutRows {
+    NicknameRow,
+    GroupSubjectRow,
+    ReceivedImagesRow,
+    ContactDetailsAboutRowsCnt
+};
+
 @implementation ContactDetails
 
 #pragma mark view lifecycle
@@ -252,7 +259,7 @@ enum ContactDetailsConnDetailsRows {
     }
     else if(indexPath.section == ContactDetailsAboutSection)
     {
-        if(indexPath.row == 0)
+        if(indexPath.row == NicknameRow)
         {
             MLTextInputCell* cell = (MLTextInputCell *)[tableView dequeueReusableCellWithIdentifier:@"TextCell"];
             if(self.contact.isGroup)
@@ -262,13 +269,13 @@ enum ContactDetailsConnDetailsRows {
             }
             else
             {
-                cell.textInput.text=[self.contact contactDisplayName];
+                cell.textInput.text = [self.contact contactDisplayName];
                 cell.textInput.placeholder = NSLocalizedString(@"Set a nickname for this contact", @"");
                 cell.textInput.delegate = self;
             }
             return cell;
         }
-        else if(indexPath.row == 1)
+        else if(indexPath.row == GroupSubjectRow)
         {
             MLDetailsTableViewCell* cell = (MLDetailsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"MessageCell"];
             if(self.contact.isGroup) {
@@ -281,12 +288,14 @@ enum ContactDetailsConnDetailsRows {
             }
             return cell;
         }
-        else
+        else if(indexPath.row == ReceivedImagesRow)
         {
             UITableViewCell* cell=  (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"TableCell"];
             cell.textLabel.text = NSLocalizedString(@"View Images Received", @"");
             return cell;
         }
+        else
+            @throw @"Unimplemented RowId in section ContactDetailsAboutSection";
     }
     else
     {
@@ -342,7 +351,7 @@ enum ContactDetailsConnDetailsRows {
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 {
     if(section == ContactDetailsHeaderSection) return 1;
-    if(section == ContactDetailsAboutSection) return 3;
+    if(section == ContactDetailsAboutSection) return ContactDetailsAboutRowsCnt;
     if(section == ContactDetailsConnDetailsSection) return ContactDetailsConnDetailsRowsCnt;
 
     return 0; //some default shouldnt reach this
@@ -625,12 +634,19 @@ enum ContactDetailsConnDetailsRows {
 
 -(void) refreshContact:(NSNotification*) notification
 {
-    weakify(self);
-    dispatch_async(dispatch_get_main_queue(), ^{
-        strongify(self);
-        self.navigationItem.title = [self.contact contactDisplayName];
-        self.saveHUD.hidden = YES;
-    });
+    MLContact* contactUpdate = notification.userInfo[@"contact"];
+    if(contactUpdate && [self.contact.accountId isEqualToString:contactUpdate.accountId] && [self.contact.contactJid isEqualToString:contactUpdate.contactJid])
+    {
+        weakify(self);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            strongify(self);
+            self.navigationItem.title = [self.contact contactDisplayName];
+            // Update nick name
+            self.contact.nickName = contactUpdate.nickName;
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:NicknameRow inSection:ContactDetailsAboutSection]] withRowAnimation:UITableViewRowAnimationNone];
+            self.saveHUD.hidden = YES;
+        });
+    }
 }
 
 -(void) refreshBlockState:(NSNotification*) notification
