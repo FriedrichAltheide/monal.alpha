@@ -98,6 +98,7 @@ typedef enum NotificationPrivacySettingOption {
 #define kMonalRefresh @"kMonalRefresh"
 #define kMonalContactRefresh @"kMonalContactRefresh"
 #define kMonalXmppUserSoftWareVersionRefresh @"kMonalXmppUserSoftWareVersionRefresh"
+#define kMonalBlockListRefresh @"kMonalBlockListRefresh"
 
 // max count of char's in a single message (both: sending and receiving)
 #define kMonalChatMaxAllowedTextLen 2048
@@ -120,6 +121,13 @@ typedef enum NotificationPrivacySettingOption {
 #define kinfoTypeKey @"type"
 #define kinfoStatusKey @"status"
 
+//blocking rules
+#define kBlockingNoMatch 0
+#define kBlockingMatchedNodeHostResource 1
+#define kBlockingMatchedNodeHost 2
+#define kBlockingMatchedHostResource 3
+#define kBlockingMatchedHost 4
+
 //temp not for release
 #ifndef DEBUG
 #define DEBUG 1
@@ -132,6 +140,4 @@ typedef enum NotificationPrivacySettingOption {
 
 //build MLXMLNode query statistics (will only optimize MLXMLNode queries if *not* defined)
 //#define QueryStatistics 1
-
-
 
