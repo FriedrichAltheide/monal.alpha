@@ -52,7 +52,7 @@ enum ContactDetailsConnDetailsRows {
     ResourcesRow,
     SubscribedStateRow,
     BlockStateRow,
-    PinnStateRow,
+    PinStateRow,
     OMEMOClearSessionRow,
     ContactDetailsConnDetailsRowsCnt
 };
@@ -323,7 +323,7 @@ enum ContactDetailsConnDetailsRows {
             else
                 thecell.textLabel.text = NSLocalizedString(@"Unblock Sender", @"");
         }
-        else if(indexPath.row == PinnStateRow)
+        else if(indexPath.row == PinStateRow)
         {
             if(self.contact.isPinned)
                 thecell.textLabel.text = NSLocalizedString(@"Unpin Chat", @"");
@@ -414,7 +414,7 @@ enum ContactDetailsConnDetailsRows {
                 [self.saveHUD hideAnimated:YES afterDelay:20];
                 break;
             }
-            case PinnStateRow:  {
+            case PinStateRow:  {
                 if(self.contact.isPinned)
                 {
                     [[DataLayer sharedInstance] unPinChat:self.accountNo andBuddyJid:self.contact.contactJid];
