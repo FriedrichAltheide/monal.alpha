@@ -1,5 +1,4 @@
 # Monal
-<<<<<<< HEAD
 ## A cross platform, modern XMPP client for iOS and MacOS
 ![Build](https://travis-ci.org/anurodhp/Monal.svg?branch=develop)
 [![Translation status](https://hosted.weblate.org/widgets/monal/-/svg-badge.svg)](https://hosted.weblate.org/engage/monal/?utm_source=widget)
