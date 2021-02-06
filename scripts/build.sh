@@ -24,7 +24,7 @@ PING_LOOP_PID=$!
 
 
 ls -l ~/Library/MobileDevice/Provisioning\ Profiles/
-
+security unlock-keychain -p travis ios-build.keychain
 echo ""
 echo "*********************************"
 echo "*     Installing macOS Pods     *"
