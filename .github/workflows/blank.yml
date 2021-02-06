@@ -32,7 +32,7 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-     - name: Test
+      - name: Test
         run: chmod +x ./scripts/build.sh
       - name: Test2
         run: ./scripts/build.sh
