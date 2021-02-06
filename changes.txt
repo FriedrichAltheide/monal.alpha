@@ -1,0 +1,5 @@
+commit 1b748d419f2e15a99a43d383da68bf5165dfa69f
+Author: Friedrich Altheide <11352905+FriedrichAltheide@users.noreply.github.com>
+Date:   Sat Feb 6 06:13:40 2021 +0100
+
+    Localizations: Switching to monal-im source
