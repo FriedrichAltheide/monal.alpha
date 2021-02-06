@@ -1,11 +1,11 @@
 #!/bin/sh
 
+cd Monal
+
 # Abort on Error
 set -e
 export PING_SLEEP=10s
-ls
-pwd
-export BUILD_OUTPUT=scripts/build.out
+export BUILD_OUTPUT=../scripts/build.out
 touch $BUILD_OUTPUT
 dump_output() {
    echo Tailing the last 50 lines of output:
