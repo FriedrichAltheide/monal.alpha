@@ -17,7 +17,11 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: self-hosted
-
+    env:
+      APP_NAME: "Monal"
+      IOS_DEVELOPER_NAME="Apple Distribution: Thilo Molitor (S8D843U34Y)"
+      APP_DEVELOPER_NAME="Developer ID Application: Thilo Molitor (S8D843U34Y)"
+      GCC_PREPROCESSOR_DEFINITIONS: "ALPHA_DEBUG=1"
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
