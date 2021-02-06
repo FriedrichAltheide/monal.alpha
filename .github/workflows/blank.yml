@@ -44,7 +44,7 @@ jobs:
         run: git submodule update --remote
       - name: cd Monal
         run: cd Monal
-      - name: Install Pods
+      - name: install Pods
         run: pod Install
       - name: Update Pods
         run: pod update
