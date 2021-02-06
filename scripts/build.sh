@@ -24,7 +24,13 @@ PING_LOOP_PID=$!
 
 
 ls -l ~/Library/MobileDevice/Provisioning\ Profiles/
+
+security default-keychain -s ios-build.keychain
+# Unlock the keychain
 security unlock-keychain -p travis ios-build.keychain
+# Set keychain timeout to 1 hour for long builds
+security set-keychain-settings -t 3600 -l ~/Library/Keychains/ios-build.keychain
+
 echo ""
 echo "*********************************"
 echo "*     Installing macOS Pods     *"
