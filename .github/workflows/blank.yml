@@ -34,19 +34,3 @@ jobs:
         run: chmod +x ./scripts/build.sh
       - name: Test2
         run: ./scripts/build.sh
-  runTests:
-    runs-on: self-hosted
-    steps:
-      - uses: actions/checkout@v2
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
-      - name: Checkout submodules
-        run: git submodule update --remote
-      - name: cd Monal
-        run: cd Monal
-      - name: install Pods
-        run: pod Install
-      - name: Update Pods
-        run: pod update
-      - name: Run run tests
-        run: xcodebuild -workspace "Monal.xcworkspace" -scheme "Monal" -sdk iphonesimulator -destination 'platform=iOS Simulator,OS=14.3,name=iPhone 8' test
