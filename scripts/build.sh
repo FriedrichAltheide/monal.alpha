@@ -3,7 +3,9 @@
 # Abort on Error
 set -e
 export PING_SLEEP=10s
-export BUILD_OUTPUT=../scripts/build.out
+ls
+pwd
+export BUILD_OUTPUT=scripts/build.out
 touch $BUILD_OUTPUT
 dump_output() {
    echo Tailing the last 50 lines of output:
